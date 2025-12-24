@@ -77,10 +77,48 @@
       padding: 20px;
     }
 
-    .hero h2 {
+    /* GLITCH TEXT */
+    .glitch {
+      position: relative;
       font-size: 3rem;
-      margin-bottom: 20px;
+      color: var(--neon);
       text-shadow: 0 0 15px var(--neon);
+    }
+
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+    }
+
+    .glitch::before {
+      left: 2px;
+      text-shadow: -2px 0 var(--pink);
+      animation: glitchTop 2s infinite linear alternate-reverse;
+    }
+
+    .glitch::after {
+      left: -2px;
+      text-shadow: -2px 0 #00ff99;
+      animation: glitchBottom 1.5s infinite linear alternate-reverse;
+    }
+
+    @keyframes glitchTop {
+      0% { clip: rect(0, 9999px, 0, 0); }
+      10% { clip: rect(10px, 9999px, 40px, 0); }
+      20% { clip: rect(85px, 9999px, 140px, 0); }
+      100% { clip: rect(0, 9999px, 0, 0); }
+    }
+
+    @keyframes glitchBottom {
+      0% { clip: rect(0, 9999px, 0, 0); }
+      10% { clip: rect(50px, 9999px, 90px, 0); }
+      20% { clip: rect(20px, 9999px, 60px, 0); }
+      100% { clip: rect(0, 9999px, 0, 0); }
     }
 
     .hero p {
@@ -174,9 +212,9 @@
   <section class="hero">
     <div>
       <h2 class="glitch" data-text="Enter the World of Innovation">
-  Enter the World of Innovation
+        Enter the World of Innovation
       </h2>
-      <p>Expeience Next-Gen Innovavtion</p>
+      <p>Experience Next-Gen Innovation</p>
       <button onclick="playNow()">EXPLORE NOW</button>
     </div>
   </section>
